@@ -80,6 +80,47 @@ const Index = () => {
     },
   ];
 
+  const wallPosts = [
+    {
+      date: "15 октября 1910",
+      time: "Вечер",
+      text: "Закончил правку статьи о смысле жизни. Душа полна противоречий, но истина где-то рядом. Завтра поеду к сестре Марии.",
+      likes: 1247,
+      comments: 89,
+      icon: "Feather"
+    },
+    {
+      date: "3 сентября 1910",
+      time: "Утро",
+      text: "Работал в поле с крестьянами. Физический труд очищает разум и приближает к истинной жизни. Вечером читал письма от читателей со всего мира.",
+      likes: 2156,
+      comments: 134,
+      icon: "Leaf"
+    },
+    {
+      date: "12 июля 1910",
+      time: "День",
+      text: "Беседовал с молодым студентом о вере и смысле существования. Как важно передавать опыт новому поколению!",
+      likes: 1893,
+      comments: 67,
+      icon: "MessageCircle"
+    },
+    {
+      date: "28 мая 1910",
+      time: "Вечер",
+      text: "Сегодня завершил новую главу. Писательство — это не профессия, а потребность души говорить правду.",
+      likes: 3421,
+      comments: 201,
+      icon: "BookOpen"
+    },
+  ];
+
+  const upcomingEvents = [
+    { date: "20 ноября", event: "Литературный вечер в Москве", icon: "Calendar" },
+    { date: "5 декабря", event: "Встреча с крестьянами Ясной Поляны", icon: "Users" },
+    { date: "15 декабря", event: "Публикация новой статьи", icon: "FileText" },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#F5E6D3] via-[#E8D5BC] to-[#D4C4A8]">
       <div className="max-w-6xl mx-auto px-4 py-8">
@@ -166,10 +207,56 @@ const Index = () => {
         <Card className="bg-[#FAF5EE] border-2 border-[#8B4513] p-8 mb-12 shadow-lg">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-12 h-12 bg-[#8B4513] rounded-full flex items-center justify-center">
-              <Icon name="Clock" size={24} className="text-[#FAF5EE]" />
+              <Icon name="ScrollText" size={24} className="text-[#FAF5EE]" />
             </div>
-            <h2 className="text-3xl font-bold text-[#2C1810]">Хронология жизни</h2>
+            <h2 className="text-3xl font-bold text-[#2C1810]">Записи на стене</h2>
           </div>
+          <div className="space-y-6">
+            {wallPosts.map((post, index) => (
+              <div 
+                key={index}
+                className="bg-gradient-to-br from-[#F5E6D3] to-[#E8D5BC] p-6 rounded-lg border-l-4 border-[#8B4513] hover:shadow-xl transition-all duration-300 group"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 bg-[#8B4513] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#DAA520] transition-colors">
+                    <Icon name={post.icon as any} size={24} className="text-[#FAF5EE] group-hover:text-[#2C1810] transition-colors" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Badge className="bg-[#DAA520] text-[#2C1810]">{post.date}</Badge>
+                      <span className="text-sm text-[#5D4E37]">{post.time}</span>
+                    </div>
+                    <p className="text-lg text-[#2C1810] leading-relaxed">{post.text}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6 pt-4 border-t border-[#8B4513]/20">
+                  <button className="flex items-center gap-2 text-[#8B4513] hover:text-[#654321] transition-colors">
+                    <Icon name="Heart" size={18} />
+                    <span className="font-semibold">{post.likes}</span>
+                  </button>
+                  <button className="flex items-center gap-2 text-[#8B4513] hover:text-[#654321] transition-colors">
+                    <Icon name="MessageCircle" size={18} />
+                    <span className="font-semibold">{post.comments}</span>
+                  </button>
+                  <button className="flex items-center gap-2 text-[#8B4513] hover:text-[#654321] transition-colors ml-auto">
+                    <Icon name="Share2" size={18} />
+                    <span className="font-semibold">Поделиться</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="md:col-span-2">
+            <Card className="bg-[#FAF5EE] border-2 border-[#8B4513] p-8 shadow-lg h-full">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 bg-[#8B4513] rounded-full flex items-center justify-center">
+                  <Icon name="Clock" size={24} className="text-[#FAF5EE]" />
+                </div>
+                <h2 className="text-3xl font-bold text-[#2C1810]">Хронология жизни</h2>
+              </div>
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-[#DAA520] via-[#8B4513] to-[#DAA520]"></div>
             <div className="space-y-8">
@@ -219,7 +306,40 @@ const Index = () => {
               ))}
             </div>
           </div>
-        </Card>
+            </Card>
+          </div>
+
+          <Card className="bg-[#FAF5EE] border-2 border-[#8B4513] p-8 shadow-lg h-full">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-[#DAA520] rounded-full flex items-center justify-center">
+                <Icon name="Calendar" size={24} className="text-[#2C1810]" />
+              </div>
+              <h2 className="text-3xl font-bold text-[#2C1810]">Календарь</h2>
+            </div>
+            <div className="space-y-4">
+              {upcomingEvents.map((event, index) => (
+                <div 
+                  key={index}
+                  className="p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg border-l-4 border-[#DAA520] hover:border-[#8B4513] hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-[#DAA520] rounded-full flex items-center justify-center group-hover:bg-[#8B4513] transition-colors">
+                      <Icon name={event.icon as any} size={20} className="text-[#2C1810] group-hover:text-[#FAF5EE] transition-colors" />
+                    </div>
+                    <Badge className="bg-[#8B4513] text-[#FAF5EE]">{event.date}</Badge>
+                  </div>
+                  <p className="text-[#2C1810] font-semibold leading-relaxed ml-13">{event.event}</p>
+                </div>
+              ))}
+              <div className="pt-4 border-t border-[#8B4513]/20">
+                <button className="w-full py-3 bg-[#8B4513] text-[#FAF5EE] rounded-lg hover:bg-[#654321] transition-colors font-semibold flex items-center justify-center gap-2">
+                  <Icon name="Plus" size={20} />
+                  Добавить событие
+                </button>
+              </div>
+            </div>
+          </Card>
+        </div>
 
         <Card className="bg-[#FAF5EE] border-2 border-[#8B4513] p-8 mb-12 shadow-lg">
           <div className="flex items-center gap-3 mb-8">
