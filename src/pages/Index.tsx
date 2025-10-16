@@ -412,6 +412,86 @@ const Index = () => {
           </Card>
         </div>
 
+        <Card className="bg-[#FAF5EE] border-2 border-[#8B4513] p-8 mb-12 shadow-lg">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 bg-[#8B4513] rounded-full flex items-center justify-center">
+              <Icon name="Mail" size={24} className="text-[#FAF5EE]" />
+            </div>
+            <h2 className="text-3xl font-bold text-[#2C1810]">Контакты</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg hover:shadow-md transition-all duration-300 group">
+                <div className="w-12 h-12 bg-[#8B4513] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#DAA520] transition-colors">
+                  <Icon name="MapPin" size={24} className="text-[#FAF5EE] group-hover:text-[#2C1810] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-[#2C1810] mb-1">Адрес</h3>
+                  <p className="text-[#5D4E37] leading-relaxed">Ясная Поляна, Тульская губерния, Российская империя</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg hover:shadow-md transition-all duration-300 group cursor-pointer">
+                <div className="w-12 h-12 bg-[#DAA520] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#8B4513] transition-colors">
+                  <Icon name="Mail" size={24} className="text-[#2C1810] group-hover:text-[#FAF5EE] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-[#2C1810] mb-1">Почтовый адрес</h3>
+                  <p className="text-[#5D4E37] leading-relaxed">Имение Ясная Поляна<br />Крапивенский уезд</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg hover:shadow-md transition-all duration-300 group">
+                <div className="w-12 h-12 bg-[#8B4513] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#DAA520] transition-colors">
+                  <Icon name="Users" size={24} className="text-[#FAF5EE] group-hover:text-[#2C1810] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-[#2C1810] mb-1">Семья</h3>
+                  <p className="text-[#5D4E37] leading-relaxed">Софья Андреевна Толстая (супруга)<br />13 детей</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg hover:shadow-md transition-all duration-300 group cursor-pointer">
+                <div className="w-12 h-12 bg-[#DAA520] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#8B4513] transition-colors">
+                  <Icon name="BookOpen" size={24} className="text-[#2C1810] group-hover:text-[#FAF5EE] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-[#2C1810] mb-1">Издательство</h3>
+                  <p className="text-[#5D4E37] leading-relaxed">«Посредник»<br />Народные издания</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg hover:shadow-md transition-all duration-300 group">
+                <div className="w-12 h-12 bg-[#8B4513] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#DAA520] transition-colors">
+                  <Icon name="School" size={24} className="text-[#FAF5EE] group-hover:text-[#2C1810] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-[#2C1810] mb-1">Школа в Ясной Поляне</h3>
+                  <p className="text-[#5D4E37] leading-relaxed">Для крестьянских детей<br />Открыта в 1859 году</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg hover:shadow-md transition-all duration-300 group cursor-pointer">
+                <div className="w-12 h-12 bg-[#DAA520] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#8B4513] transition-colors">
+                  <Icon name="Globe" size={24} className="text-[#2C1810] group-hover:text-[#FAF5EE] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-[#2C1810] mb-1">Международные связи</h3>
+                  <p className="text-[#5D4E37] leading-relaxed">Переписка с писателями и мыслителями по всему миру</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 p-6 bg-gradient-to-r from-[#8B4513] to-[#654321] rounded-lg text-center">
+            <p className="text-[#FAF5EE] text-lg leading-relaxed italic">
+              «Все приходите в Ясную Поляну. Двери всегда открыты для искренних душ.»
+            </p>
+          </div>
+        </Card>
+
         <footer className="mt-12 text-center py-6 border-t-2 border-[#8B4513]/30">
           <p className="text-[#5D4E37] text-lg">
             «Чтобы жить честно, надо рваться, путаться, биться, ошибаться...»
