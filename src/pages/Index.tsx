@@ -5,6 +5,26 @@ import { useState } from "react";
 
 const Index = () => {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
+  const [followersCount] = useState(247856);
+  const [friendsCount] = useState(328);
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const friends = [
+    { name: "Иван Тургенев", role: "Писатель", avatar: "IT" },
+    { name: "Антон Чехов", role: "Драматург", avatar: "АЧ" },
+    { name: "Фёдор Достоевский", role: "Романист", avatar: "ФД" },
+    { name: "Афанасий Фет", role: "Поэт", avatar: "АФ" },
+    { name: "Николай Некрасов", role: "Поэт-публицист", avatar: "НН" },
+    { name: "Максим Горький", role: "Прозаик", avatar: "МГ" },
+  ];
+
+  const subscribers = [
+    { name: "Махатма Ганди", location: "Индия", avatar: "МГ" },
+    { name: "Ромен Роллан", location: "Франция", avatar: "РР" },
+    { name: "Томас Манн", location: "Германия", avatar: "ТМ" },
+    { name: "Бернард Шоу", location: "Великобритания", avatar: "БШ" },
+    { name: "Рабиндранат Тагор", location: "Индия", avatar: "РТ" },
+  ];
 
   const works = [
     { title: "Война и мир", year: "1869", genre: "Роман-эпопея" },
@@ -84,6 +104,33 @@ const Index = () => {
                   <p>28 августа 1828 — 20 ноября 1910</p>
                   <p className="font-light">Граф, прозаик, мыслитель, просветитель</p>
                 </div>
+                
+                <div className="flex gap-4 mb-4">
+                  <div className="flex items-center gap-2">
+                    <Icon name="Users" size={20} className="text-[#8B4513]" />
+                    <span className="text-lg text-[#2C1810]">
+                      <strong>{friendsCount}</strong> друзей
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Icon name="UserPlus" size={20} className="text-[#8B4513]" />
+                    <span className="text-lg text-[#2C1810]">
+                      <strong>{followersCount.toLocaleString()}</strong> подписчиков
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setIsFollowing(!isFollowing)}
+                  className={`px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2 justify-center ${
+                    isFollowing
+                      ? 'bg-[#E8D5BC] text-[#2C1810] border-2 border-[#8B4513] hover:bg-[#D4C4A8]'
+                      : 'bg-[#8B4513] text-[#FAF5EE] hover:bg-[#654321]'
+                  }`}
+                >
+                  <Icon name={isFollowing ? "UserCheck" : "UserPlus"} size={20} />
+                  {isFollowing ? 'Вы подписаны' : 'Подписаться'}
+                </button>
                 
                 <div className="flex gap-3 flex-wrap">
                   <Badge className="bg-[#8B4513] text-[#FAF5EE] hover:bg-[#654321] px-4 py-2 text-base">
@@ -299,6 +346,71 @@ const Index = () => {
             ))}
           </div>
         </Card>
+
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <Card className="bg-[#FAF5EE] border-2 border-[#8B4513] p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-[#8B4513] rounded-full flex items-center justify-center">
+                <Icon name="Users" size={24} className="text-[#FAF5EE]" />
+              </div>
+              <h2 className="text-3xl font-bold text-[#2C1810]">Друзья</h2>
+              <Badge className="ml-auto bg-[#DAA520] text-[#2C1810]">{friends.length}</Badge>
+            </div>
+            <div className="space-y-4">
+              {friends.map((friend, index) => (
+                <div 
+                  key={index}
+                  className="flex items-center gap-4 p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg hover:shadow-md transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="w-14 h-14 bg-[#8B4513] rounded-full flex items-center justify-center text-[#FAF5EE] font-bold text-lg group-hover:bg-[#DAA520] group-hover:text-[#2C1810] transition-all duration-300">
+                    {friend.avatar}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-[#2C1810] group-hover:text-[#8B4513] transition-colors">{friend.name}</h3>
+                    <p className="text-[#5D4E37] text-sm">{friend.role}</p>
+                  </div>
+                  <Icon name="ChevronRight" size={20} className="text-[#8B4513] opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          <Card className="bg-[#FAF5EE] border-2 border-[#8B4513] p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-[#DAA520] rounded-full flex items-center justify-center">
+                <Icon name="UserPlus" size={24} className="text-[#2C1810]" />
+              </div>
+              <h2 className="text-3xl font-bold text-[#2C1810]">Подписчики</h2>
+              <Badge className="ml-auto bg-[#8B4513] text-[#FAF5EE]">{followersCount.toLocaleString()}</Badge>
+            </div>
+            <div className="space-y-4">
+              {subscribers.map((subscriber, index) => (
+                <div 
+                  key={index}
+                  className="flex items-center gap-4 p-4 bg-gradient-to-r from-[#F5E6D3] to-[#E8D5BC] rounded-lg hover:shadow-md transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="w-14 h-14 bg-[#DAA520] rounded-full flex items-center justify-center text-[#2C1810] font-bold text-lg group-hover:bg-[#8B4513] group-hover:text-[#FAF5EE] transition-all duration-300">
+                    {subscriber.avatar}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-[#2C1810] group-hover:text-[#8B4513] transition-colors">{subscriber.name}</h3>
+                    <p className="text-[#5D4E37] text-sm flex items-center gap-1">
+                      <Icon name="MapPin" size={14} />
+                      {subscriber.location}
+                    </p>
+                  </div>
+                  <Icon name="ChevronRight" size={20} className="text-[#8B4513] opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              ))}
+              <div className="text-center pt-4">
+                <button className="text-[#8B4513] hover:text-[#654321] font-semibold flex items-center gap-2 mx-auto group">
+                  Показать всех подписчиков
+                  <Icon name="ArrowRight" size={18} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </Card>
+        </div>
 
         <footer className="mt-12 text-center py-6 border-t-2 border-[#8B4513]/30">
           <p className="text-[#5D4E37] text-lg">
